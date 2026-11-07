@@ -13,12 +13,6 @@ And because proteins that have never been tested for protection are *unlabeled* 
 than non-protective, the model is trained and evaluated as a **positive-unlabeled** problem
 — 1,000 bootstrap-resampled XGBoost bags whose predictions are averaged.
 
-```
-sequence ──────────────► ESM-C 6B (layer 80, mean-pooled)      2560 ─┐
-                                                                     ├─► 6656 ─► PU bagging ─► score
-InterProScan ─► desc_nodup ─► BioMistral-7B (mean-pooled)      4096 ─┘         (1000 XGBoost bags)
-```
-
 ## Install
 
 ```bash
