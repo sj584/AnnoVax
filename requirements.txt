@@ -1,0 +1,15 @@
+# Core: training and prediction from precomputed embeddings.
+numpy>=2.0
+pandas>=2.0
+scipy>=1.12
+scikit-learn>=1.5
+xgboost>=3.2
+
+# Building embeddings yourself (scripts/preprocess.py, scripts/extract_embedding.py).
+torch>=2.2
+transformers>=4.49
+sentence-transformers>=3.0
+biopython>=1.83
+tqdm>=4.66
+# ESM-C 6B is served remotely through this SDK; needs an API token.
+esm>=3.1

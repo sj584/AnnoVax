@@ -1,0 +1,20 @@
+name: annovax
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy>=2.0
+  - pandas>=2.0
+  - scipy>=1.12
+  - scikit-learn>=1.5
+  - pip:
+      # GPU build; install py-xgboost-cpu from conda-forge instead for a CPU-only box.
+      - xgboost>=3.2
+      - torch>=2.2
+      - transformers>=4.49
+      - sentence-transformers>=3.0
+      - biopython>=1.83
+      - tqdm>=4.66
+      - esm>=3.1
+      - pytest>=8.0
