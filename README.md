@@ -153,12 +153,6 @@ Semantic deduplication uses `all-MiniLM-L6-v2` at cosine ≥ 0.80. The same doma
 described once per member database, and leaving those near-duplicates in would let a
 frequently-annotated domain dominate the text embedding by repetition alone.
 
-## Citation
-
-> Choi S†, Moon D†, Cho J, Kim D. *AnnoVax: protective antigen prediction with interpretable
-> InterProScan annotation and sparse autoencoders under positive-unlabeled learning.*
-
-Model weights and embedding caches: Zenodo `DOI_PLACEHOLDER`.
 
 ## References
 
