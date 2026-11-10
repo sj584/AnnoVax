@@ -83,6 +83,7 @@ src/annovax/
   ensemble.py         convergence, rank stability, bagging gain
   metrics/            standard and PU metrics
 scripts/              preprocess / extract_embedding / train / predict / evaluate_benchmark
+results/predictions/  AnnoVax scores on the PLGDL test and Vaxign sets — see its README
 tests/                pytest suite (no GPU required)
 ```
 
@@ -117,6 +118,11 @@ for arm in esmc_biomistral esmc biomistral esm2_3b biobert; do
     python scripts/train.py --arm "$arm" --k 1000 --ratio 2.0 --p-ratio 0.8 --tag ablation
 done
 ```
+
+The published caches cover ESM-C 6B and BioMistral-7B, so the first three arms run as they
+stand. The `esm2_3b` and `biobert` controls need their own caches, which are not published:
+build them with `scripts/extract_embedding.py -e esm2_3b,biobert` for both the `plgdl` and
+`vaxign` corpora first. Both encoders run locally and need no API token.
 
 Both PLGDL splits ship in two variants: `--train-variant original` is PLGDL's published
 5,280/1,320 split, and `surfmatched` (the default, and what the released model uses) is the
