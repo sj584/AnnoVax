@@ -28,6 +28,8 @@ transformers and the ESM SDK are needed only if you build embeddings yourself.
 
 ## Quick start — score your own proteins
 
+Model weights and embedding caches: Zenodo [10.5281/zenodo.24095960](https://doi.org/10.5281/zenodo.24095960).
+
 ```bash
 # 0. model weights and the published embedding caches
 bash scripts/download_weights.sh
