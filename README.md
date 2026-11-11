@@ -35,14 +35,18 @@ Model weights and embedding caches: Zenodo [10.5281/zenodo.24095960](https://doi
 bash scripts/download_weights.sh
 
 # 1. annotate (InterProScan 6; several hours for a large FASTA)
+#    --datadir is required: it holds the member-database files (Pfam, CDD, PANTHER, ...),
+#    about 34 GB, which InterProScan downloads into that directory on the first run.
 nextflow run ebi-pf-team/interproscan6 -profile docker \
-    --input my_proteins.fasta --formats tsv --outdir interproscan_out
+    --input my_proteins.fasta --datadir interproscan_data \
+    --formats tsv --outdir interproscan_out
 
 # 2. pool the annotations into one text per protein and drop near-duplicates
 python scripts/preprocess.py -i my_proteins.fasta \
     -ip interproscan_out/my_proteins.fasta.tsv
 
-# 3. embed (ESM-C 6B is remote; export ESM_API_KEY first)
+# 3. embed (ESM-C 6B is served remotely and needs a token)
+export ESM_API_KEY=...          # or pass --token; see "Notes on the encoders"
 python scripts/extract_embedding.py -i my_proteins_preprocessed.csv \
     -o embeddings --corpus mine
 
@@ -154,8 +158,14 @@ standard F1 and should not be read as one.
 | BioBERT *(ablation)* | `desc_nodup`, 512 tokens | CLS token, 768-d | local GPU |
 
 No local weights are published for ESM-C 6B, so it is served through the ESM SDK and needs
-an API token. If you do not have one, use the published caches — they cover every protein
-in `data/`, which is all you need to reproduce the paper.
+an API token:
+
+```bash
+export ESM_API_KEY=your_token_here      # or $ESM_FORGE_TOKEN, or --token on the command line
+```
+
+Without it, step 3 cannot embed new sequences. The published caches need no token and
+cover every protein in `data/`, which is all you need to reproduce the paper.
 
 Semantic deduplication uses `all-MiniLM-L6-v2` at cosine ≥ 0.80. The same domain is often
 described once per member database, and leaving those near-duplicates in would let a
