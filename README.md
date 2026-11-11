@@ -178,8 +178,6 @@ frequently-annotated domain dominate the text embedding by repetition alone.
 2. BioMistral-7B — biomedical language model · [HuggingFace](https://huggingface.co/BioMistral/BioMistral-7B)
 3. InterProScan — protein signature annotation · [docs](https://interproscan-docs.readthedocs.io/)
 4. Protegen — protective antigen database · [VIOLIN](https://violinet.org/protegen/)
-5. Mordelet F, Vert JP. *A bagging SVM to learn from positive and unlabeled examples.* Pattern Recognit Lett. 2014.
-6. Lee WS, Liu B. *Learning with positive and unlabeled examples using weighted logistic regression.* ICML 2003.
 
 ## License
 
